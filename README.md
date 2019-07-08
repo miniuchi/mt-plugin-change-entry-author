@@ -1,0 +1,1 @@
+# mt-plugin-change-entry-author
