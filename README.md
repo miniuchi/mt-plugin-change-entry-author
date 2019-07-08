@@ -18,6 +18,7 @@
 ## 動作確認環境
 
 * Movable Type 7 r.4601
+* Movable Type 6.5
 
 ## フィードバック
 

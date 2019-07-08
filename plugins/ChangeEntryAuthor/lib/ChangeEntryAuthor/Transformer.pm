@@ -12,8 +12,9 @@ sub template_param_edit_entry {
     return unless $param->{id};
     return unless $app->blog && $app->blog->id;
 
-    my $type            = $param->{object_type} || '';
-    my $open_batch_perm = $type eq 'page'
+    my $type = $param->{object_type} || '';
+    my $open_batch_perm
+        = $type eq 'page'
         ? 'open_batch_page_editor_via_list'
         : 'open_batch_entry_editor_via_list';
     return unless $app->can_do($open_batch_perm);
@@ -28,12 +29,17 @@ sub _insert_author_setting_before_authored_on {
 
     my $author_setting = $tmpl->createElement(
         'app:setting',
-        {   id    => 'author_id',
-            label => $app->translate('Author'),
+        {   id          => 'author_id',
+            label       => $app->translate('Author'),
+            label_class => 'top-label',
         },
     );
 
-    my $author_is_selectable = $user->can_manage_users_groups
+    my $author_is_selectable = (
+          $user->can('can_manage_users_groups')
+        ? $user->can_manage_users_groups
+        : $user->is_superuser
+        )
         || $user->permissions($blog_id)->can_do('open_select_author_dialog');
     my $author_select_node
         = $author_is_selectable
@@ -67,8 +73,13 @@ sub _generate_selectable_author_node {
             .= qq{<option value="$author_id"$selected>$escaped_author_nickname</option>};
     }
 
+    my $select_class
+        = $app->version_number >= 7
+        ? 'custom-select form-control full'
+        : 'full';
+
     $tmpl->createTextNode(
-        qq{<select name="new_author_id" id="author-id" class="custom-select form-control full">$select_options_html</select>}
+        qq{<select name="new_author_id" id="author-id" class="$select_class">$select_options_html</select>}
     );
 }
 
