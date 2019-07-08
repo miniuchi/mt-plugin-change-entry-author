@@ -8,10 +8,8 @@ use MT::Permission;
 sub load_iter {
     my $class   = shift;
     my ($args)  = @_;
-    my $type    = $args->{type};
     my $blog_id = $args->{blog_id};
-
-    die unless $type && $blog_id;
+    my $type    = $args->{type};
 
     MT::Author->load_iter(
         undef,
