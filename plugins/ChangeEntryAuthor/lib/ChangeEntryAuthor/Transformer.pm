@@ -2,9 +2,8 @@ package ChangeEntryAuthor::Transformer;
 use strict;
 use warnings;
 
-use MT::Author;
-use MT::Permission;
 use MT::Util;
+use ChangeEntryAuthor::SelectableAuthors;
 
 sub template_param_edit_entry {
     my ( $cb, $app, $param, $tmpl ) = @_;
@@ -55,13 +54,15 @@ sub _insert_author_setting_before_authored_on {
 sub _generate_selectable_author_node {
     my ( $app, $param, $tmpl, $type ) = @_;
 
-    my @selectable_authors
-        = _load_selectable_authors( $type, $app->blog->id );
-    my $entry             = $app->model($type)->load( $param->{id} );
-    my $current_author_id = $entry ? $entry->author_id : 0;
-
     my $select_options_html = '';
-    for my $author (@selectable_authors) {
+    my $entry               = $app->model($type)->load( $param->{id} );
+    my $current_author_id   = $entry ? $entry->author_id : 0;
+    my $iter                = ChangeEntryAuthor::SelectableAuthors->load_iter(
+        {   blog_id => $app->blog->id,
+            type    => $type,
+        }
+    );
+    while ( my $author = $iter->() ) {
         my $author_id = $author->id;
         my $escaped_author_nickname
             = MT::Util::encode_html( $author->nickname );
@@ -80,25 +81,6 @@ sub _generate_selectable_author_node {
 
     $tmpl->createTextNode(
         qq{<select name="new_author_id" id="author-id" class="$select_class">$select_options_html</select>}
-    );
-}
-
-sub _load_selectable_authors {
-    my ( $type, $blog_id ) = @_;
-    MT::Author->load(
-        undef,
-        {   sort => 'name',
-            join => MT::Permission->join_on(
-                'author_id',
-                {   (   $type eq 'page'
-                        ? ( permissions => "%\'manage_pages\'%" )
-                        : ( permissions => "%\'create_post\'%" )
-                    ),
-                    blog_id => $blog_id,
-                },
-                { 'like' => { 'permissions' => 1 }, unique => 1 },
-            ),
-        }
     );
 }
 
