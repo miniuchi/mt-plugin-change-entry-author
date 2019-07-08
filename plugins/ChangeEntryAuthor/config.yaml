@@ -1,0 +1,18 @@
+id: ChangeEntryAuthor
+key: ChangeEntryAuthor
+name: ChangeEntryAuthor
+description: <MT_TRANS phrase="Enable to change entry/page's author.">
+version: 0.01
+author_name: 'Six Apart Ltd.'
+author_link: https://www.sixapart.jp/
+plugin_link: https://github.com/miniuchi/mt-plugin-change-entry-author
+
+l10n_class: ChangeEntryAuthor::L10N
+
+applications:
+  cms:
+    callbacks:
+      cms_pre_save.entry: $ChangeEntryAuthor::ChangeEntryAuthor::Callback::cms_pre_save_entry
+      cms_pre_save.page: $ChangeEntryAuthor::ChangeEntryAuthor::Callback::cms_pre_save_entry
+      template_param.edit_entry: $ChangeEntryAuthor::ChangeEntryAuthor::Transformer::template_param_edit_entry
+
