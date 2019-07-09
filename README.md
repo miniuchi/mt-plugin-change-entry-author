@@ -4,6 +4,14 @@
 
 記事・ページ編集画面でのユーザー変更を可能にします。
 
+## スクリーンショット
+
+### MT7
+<img src="https://github.com/miniuchi/mt-plugin-change-entry-author/raw/master/mt7.png" width="50%" />
+
+### MT6
+<img src="https://github.com/miniuchi/mt-plugin-change-entry-author/raw/master/mt6.png" width="50%" />
+
 ## ダウンロード
 
 * [バージョン 0.01 (2019/07/08)](https://github.com/miniuchi/mt-plugin-change-entry-author/archive/0.01.zip)
