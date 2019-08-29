@@ -1,22 +1,22 @@
 # ChangeEntryAuthor プラグイン for Movable Type
 
-[![Build Status](https://travis-ci.org/miniuchi/mt-plugin-change-entry-author.svg?branch=master)](https://travis-ci.org/miniuchi/mt-plugin-change-entry-author)
+[![Build Status](https://travis-ci.org/movabletype/mt-plugin-change-entry-author.svg?branch=master)](https://travis-ci.org/movabletype/mt-plugin-change-entry-author)
 
 記事・ページ編集画面でのユーザー変更を可能にします。
 
 ## スクリーンショット
 
 ### MT7
-<img src="https://github.com/miniuchi/mt-plugin-change-entry-author/raw/master/mt7.png" width="50%" />
+<img src="https://github.com/movabletype/mt-plugin-change-entry-author/raw/master/mt7.png" width="50%" />
 
 ### MT6
-<img src="https://github.com/miniuchi/mt-plugin-change-entry-author/raw/master/mt6.png" width="50%" />
+<img src="https://github.com/movabletype/mt-plugin-change-entry-author/raw/master/mt6.png" width="50%" />
 
 ## ダウンロード
 
-* [バージョン 0.01 (2019/07/08)](https://github.com/miniuchi/mt-plugin-change-entry-author/archive/0.01.zip)
+* [バージョン 0.01 (2019/07/08)](https://github.com/movabletype/mt-plugin-change-entry-author/archive/0.01.zip)
 
-[更新履歴](https://github.com/miniuchi/mt-plugin-change-entry-author/releases)
+[更新履歴](https://github.com/movabletype/mt-plugin-change-entry-author/releases)
 
 ## インストール
 
@@ -33,7 +33,7 @@
 本プラグインは Movable Type 製品サポートの対象外となります。
 不具合・ご要望は GitHub リポジトリの Issues の方までご連絡ください。
 
-https://github.com/miniuchi/mt-plugin-change-entry-author/issues
+https://github.com/movabletype/mt-plugin-change-entry-author/issues
 
 ## ライセンス
 
